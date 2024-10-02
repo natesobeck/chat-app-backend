@@ -3,10 +3,10 @@ import mongoose from 'mongoose'
 const Schema = mongoose.Schema
 
 const chatSchema = new Schema({
-  messages: [messageSchema],
+  messages: [{ type: Schema.Types.ObjectId, ref: 'Message' }],
   hasNewMessage: {type: Boolean, default: false},
   participants: [{ type: Schema.Types.ObjectId, ref: 'Profile' }],
-  lastMessage: { type: Schema.Typess.ObjectId, ref: 'Message' },
+  lastMessage: { type: Schema.Types.ObjectId, ref: 'Message' },
   isDeleted: { type: Boolean, default: false },
   unreadMessageCount: [{
     participantId: { type: Schema.Types.ObjectId, ref: 'Profile' },
