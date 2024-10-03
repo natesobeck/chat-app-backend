@@ -16,6 +16,6 @@ const chatSchema = new Schema({
   timestamps: true,
 })
 
-const Profile = mongoose.model('Profile', profileSchema)
+const Chat = mongoose.model('Chat', chatSchema)
 
-export { Profile }
+export { Chat }
