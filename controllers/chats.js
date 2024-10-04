@@ -24,9 +24,9 @@ async function create(req, res) {
       return res.status(200).json({ message: "Chat already exists" })
     }
 
-    const unreadMessageCount = participants.map((participant) => {
+    const unreadMessageCount = participants.map((participantId) => {
       return {
-        participant,
+        participantId,
         count: 0,
       }
     })
@@ -45,4 +45,19 @@ async function create(req, res) {
   }
 }
 
-export { index, create }
+async function update(req, res) {
+  try {
+    const { newMessage, editedMessage, _id: chatId } = req.body
+    const chat = Chat.findById(chatId)
+
+    //*  UNFINISHED
+    if (newMessage) {
+
+    }
+  } catch (error) {
+    console.log(error)
+    res.status(500).json(error)
+  }
+}
+
+export { index, create, update }
