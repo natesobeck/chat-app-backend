@@ -5,6 +5,7 @@ async function index(req, res) {
     const userId = req.user.profile
 
     const chats = await Chat.find({ participants: userId })
+
     res.status(200).json(chats)
   } catch (error) {
     console.log(error)
@@ -45,19 +46,4 @@ async function create(req, res) {
   }
 }
 
-async function update(req, res) {
-  try {
-    const { newMessage, editedMessage, _id: chatId } = req.body
-    const chat = Chat.findById(chatId)
-
-    //*  UNFINISHED
-    if (newMessage) {
-
-    }
-  } catch (error) {
-    console.log(error)
-    res.status(500).json(error)
-  }
-}
-
-export { index, create, update }
+export { index, create }
